@@ -247,7 +247,7 @@ export default function DashboardScreen() {
                 </View>
                 <TouchableOpacity style={styles.perfilContainer} onPress={() => router.push("/Profile")}>
                     <View style={styles.perfilImagem}>
-                        <Text style={styles.perfilInicial}>{usuario?.nome?.charAt(0)}</Text>
+                        <Text style={styles.perfilInicial}>🔔</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -263,7 +263,7 @@ export default function DashboardScreen() {
 
                 <View style={styles.cardConteudo}>
                     {carregandoSaldo ? (
-                        <ActivityIndicator size="large" color="#4a7df3" />
+                        <ActivityIndicator size="large" color="#6366F1" />
                     ) : (
                         <Text style={styles.valorSaldo}>{formatarMoeda(saldo)}</Text>
                     )}
@@ -308,12 +308,12 @@ export default function DashboardScreen() {
                 <View style={styles.transacoesCabecalho}>
                     <Text style={styles.transacoesTitulo}>Transactions</Text>
                     <TouchableOpacity onPress={() => router.push('/Transactions')}>
-                        <Text style={styles.verTodas}>Ver todas</Text>
+                        <Text style={styles.verTodas}>See All</Text>
                     </TouchableOpacity>
                 </View>
 
                 {carregandoTransacoes ? (
-                    <ActivityIndicator style={styles.carregando} size="large" color="#4a7df3" />
+                    <ActivityIndicator style={styles.carregando} size="large" color="#6366F1" />
                 ) : (
                     <FlatList
                         data={transacoes}
@@ -323,7 +323,7 @@ export default function DashboardScreen() {
                             <RefreshControl
                                 refreshing={atualizando}
                                 onRefresh={onRefresh}
-                                colors={['#4a7df3']}
+                                colors={['#6366F1']}
                             />
                         }
                         ListEmptyComponent={
@@ -333,6 +333,23 @@ export default function DashboardScreen() {
                         }
                     />
                 )}
+            </View>
+
+            <View style={styles.bottomNavigation}>
+                <TouchableOpacity style={styles.navItem}>
+                    <Text style={[styles.navIcon, styles.activeNavIcon]}>🏠</Text>
+                    <Text style={[styles.navText, styles.activeNavText]}>Home</Text>
+                </TouchableOpacity>
+                
+                <TouchableOpacity style={styles.navItem}>
+                    <Text style={styles.navIcon}>💳</Text>
+                    <Text style={styles.navText}>My Cards</Text>
+                </TouchableOpacity>
+                
+                <TouchableOpacity style={styles.navItem} onPress={() => router.push('/Profile')}>
+                    <Text style={styles.navIcon}>👤</Text>
+                    <Text style={styles.navText}>Profile</Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     );
@@ -368,9 +385,11 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 20,
-        backgroundColor: '#4a7df3',
+        backgroundColor: '#6366F1',
         justifyContent: 'center',
         alignItems: 'center',
+        borderColor: '#7376F3',
+        borderWidth: 2,
     },
     perfilInicial: {
         color: 'white',
@@ -402,7 +421,7 @@ const styles = StyleSheet.create({
     },
     cardAtualizar: {
         fontSize: 14,
-        color: '#4a7df3',
+        color: '#6366F1',
         fontWeight: '500',
     },
     cardConteudo: {
@@ -478,7 +497,7 @@ const styles = StyleSheet.create({
     },
     verTodas: {
         fontSize: 14,
-        color: '#4a7df3',
+        color: '#6366F1',
         fontWeight: '500',
     },
     carregando: {
@@ -490,6 +509,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         borderColor: '#d3d3d3',
         borderWidth: 1,
+        marginBottom: 20,
     },
     transacaoIcone: {
         marginRight: 15,
@@ -540,5 +560,33 @@ const styles = StyleSheet.create({
     semTransacoesTexto: {
         fontSize: 16,
         color: '#7b8bb2',
+    },
+    bottomNavigation: {
+        flexDirection: 'row',
+        backgroundColor: 'white',
+        paddingBottom: 20,
+        paddingTop: 10,
+        borderTopWidth: 1,
+        borderTopColor: '#F0F2F5',
+    },
+    navItem: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    navIcon: {
+        fontSize: 20,
+        marginBottom: 5,
+        color: '#888',
+    },
+    navText: {
+        fontSize: 12,
+        color: '#888',
+    },
+    activeNavIcon: {
+        color: '#6C5CE7',
+    },
+    activeNavText: {
+        color: '#6C5CE7',
+        fontWeight: '500',
     },
 });

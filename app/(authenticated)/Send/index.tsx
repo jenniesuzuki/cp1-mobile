@@ -149,22 +149,13 @@ export default function Send() {
                         >
                             <Text style={styles.backButtonText}>←</Text>
                         </TouchableOpacity>
-                        <Text style={styles.headerTitle}>Enviar Dinheiro</Text>
+                        <Text style={styles.headerTitle}>Transfer Money</Text>
                         <View style={styles.emptySpace} />
                     </View>
 
                     <View style={styles.form}>
-                        <Text style={styles.label}>Para quem você deseja enviar?</Text>
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Apelido ou nome de usuário"
-                            value={contaDestino}
-                            onChangeText={setContaDestino}
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                        />
 
-                        <Text style={styles.label}>Quanto deseja enviar?</Text>
+                        <Text style={styles.label}>Enter amount</Text>
                         <View style={styles.valorContainer}>
                             <Text style={styles.moedaSymbol}>R$</Text>
                             <TextInput
@@ -176,16 +167,26 @@ export default function Send() {
                             />
                         </View>
 
-                        <Text style={styles.label}>Descrição</Text>
+                        <Text style={styles.label}></Text>
                         <TextInput
                             style={styles.input}
-                            placeholder="Motivo da transferência"
+                            placeholder="Add Nickname"
+                            value={contaDestino}
+                            onChangeText={setContaDestino}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                        />
+
+                        <Text style={styles.label}></Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Transference Reason"
                             value={descricao}
                             onChangeText={setDescricao}
                             maxLength={100}
                         />
 
-                        <Text style={styles.label}>Categoria</Text>
+                        <Text style={styles.label}>Category</Text>
                         <View style={styles.categoriasContainer}>
                             {categorias.map((cat) => (
                                 <TouchableOpacity
@@ -217,7 +218,7 @@ export default function Send() {
                             disabled={carregando}
                         >
                             <Text style={styles.botaoEnviarTexto}>
-                                {carregando ? 'Enviando...' : 'Enviar Dinheiro'}
+                                {carregando ? 'Sending...' : 'Send Money'}
                             </Text>
                         </TouchableOpacity>
                     </View>
@@ -230,7 +231,7 @@ export default function Send() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f8f9fa',
+        backgroundColor: '#ffffff',
     },
     keyboardAvoid: {
         flex: 1,
@@ -251,7 +252,7 @@ const styles = StyleSheet.create({
     },
     backButtonText: {
         fontSize: 24,
-        color: '#4a7df3',
+        color: '#6366F1',
     },
     headerTitle: {
         fontSize: 18,
@@ -266,16 +267,16 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 16,
-        fontWeight: '500',
         color: '#2e3e5c',
         marginBottom: 8,
         marginTop: 16,
+        textAlign: 'center',
     },
     input: {
-        backgroundColor: '#ffffff',
+        backgroundColor: '#f8f9fa',
         borderRadius: 8,
         borderWidth: 1,
-        borderColor: '#e0e0e0',
+        borderColor: '#f8f9fa',
         paddingHorizontal: 16,
         paddingVertical: 12,
         fontSize: 16,
@@ -284,8 +285,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#ffffff',
-        borderRadius: 8,
-        borderWidth: 1,
         borderColor: '#e0e0e0',
         paddingHorizontal: 16,
     },
@@ -313,7 +312,7 @@ const styles = StyleSheet.create({
         margin: 4,
     },
     categoriaItemSelecionada: {
-        backgroundColor: '#4a7df3',
+        backgroundColor: '#6366F1',
     },
     categoriaTexto: {
         color: '#2e3e5c',
@@ -324,12 +323,12 @@ const styles = StyleSheet.create({
         fontWeight: '500',
     },
     botaoEnviar: {
-        backgroundColor: '#4a7df3',
+        backgroundColor: '#ff3366',
         borderRadius: 8,
         paddingVertical: 16,
         alignItems: 'center',
         marginTop: 30,
-        shadowColor: '#4a7df3',
+        shadowColor: '#ff3366',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.2,
         shadowRadius: 8,

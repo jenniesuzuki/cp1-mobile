@@ -13,6 +13,7 @@ import {
     Alert,
     ActivityIndicator,
     Image,
+    TextInput,
 } from 'react-native';
 
 interface IUsuarioProps {
@@ -36,6 +37,12 @@ export default function Profile() {
     const [temaEscuro, setTemaEscuro] = useState(false);
     const [notificacoes, setNotificacoes] = useState(true);
     const [biometria, setBiometria] = useState(false);
+
+    // const [nome, setNome] = useState('');
+    // const [cpf, setCpf] = useState('');
+    // const [apelido, setApelido] = useState('');
+    // const [senha, setSenha] = useState('');
+    // const [confirmaSenha, setConfirmaSenha] = useState('');
 
     const { token, handleLogout, usuario } = useAuth();
 
@@ -111,7 +118,7 @@ export default function Profile() {
                 >
                     <Text style={[styles.backButtonText, temaEscuro && styles.textDark]}>←</Text>
                 </TouchableOpacity>
-                <Text style={[styles.headerTitle, temaEscuro && styles.textDark]}>Meu Perfil</Text>
+                <Text style={[styles.headerTitle, temaEscuro && styles.textDark]}>Profile</Text>
                 <View style={styles.emptySpace} />
             </View>
 
@@ -135,28 +142,69 @@ export default function Profile() {
                                     {usuario?.nome.charAt(0) || 'U'}
                                 </Text>
                             </View>
-                            <TouchableOpacity style={styles.editarFotoButton}>
+                            {/* <TouchableOpacity style={styles.editarFotoButton}>
                                 <Text style={styles.editarFotoText}>Editar</Text>
-                            </TouchableOpacity>
+                            </TouchableOpacity> */}
                         </View>
-
+                        {/* 
                         <Text style={[styles.nomeUsuario, temaEscuro && styles.textDark]}>
                             {usuario?.nome || 'Usuário'}
                         </Text>
                         <Text style={styles.apelidoUsuario}>
                             @{usuario?.apelido || 'usuario'}
-                        </Text>
-
+                        </Text> */}
+                        {/* 
                         <TouchableOpacity
                             style={styles.editarPerfilButton}
                             onPress={() => router.push('EditarPerfil')}
                         >
                             <Text style={styles.editarPerfilText}>Editar Perfil</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
 
                     {/* Informações pessoais */}
-                    <View style={[styles.secao, temaEscuro && styles.cardDark]}>
+                    <View style={styles.container}>
+                        <Text style={styles.label}>Name</Text>
+                        <TextInput style={styles.input} placeholder="John Doe" placeholderTextColor="#999999"></TextInput>
+                        <Text style={styles.label}>Apelido</Text>
+                        <TextInput style={styles.input} placeholder="John" placeholderTextColor="#999999"></TextInput>
+                        <Text style={styles.label}>Email</Text>
+                        <TextInput style={styles.input} placeholder="John@john.com" placeholderTextColor="#999999"></TextInput>
+                    </View>
+                    {/* <View style={styles.form}>
+                        <Text style={styles.label}>Name</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="John Doe"
+                            placeholderTextColor="#999999"
+                            value={nome}
+                            onChangeText={setNome}
+                            autoCapitalize="words"
+                        />
+
+                        <Text style={styles.label}>Apelido</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="John"
+                            placeholderTextColor="#999999"
+                            value={apelido}
+                            onChangeText={setApelido}
+                            autoCapitalize="none"
+                        />
+
+                        <Text style={styles.label}>Email</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="John@john.com"
+                            value={senha}
+                            onChangeText={setSenha}
+                        />
+
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.buttonText}>Salvar</Text>
+                        </TouchableOpacity>
+                    </View> */}
+                    {/* <View style={[styles.secao, temaEscuro && styles.cardDark]}>
                         <Text style={[styles.secaoTitulo, temaEscuro && styles.textDark]}>
                             Informações Pessoais
                         </Text>
@@ -196,17 +244,17 @@ export default function Profile() {
                                 {usuario?.createdAt ? new Date(usuario.createdAt).toLocaleDateString('pt-BR') : '01/01/2023'}
                             </Text>
                         </View>
-                    </View>
+                    </View> */}
 
                     {/* Configurações */}
                     <View style={[styles.secao, temaEscuro && styles.cardDark]}>
                         <Text style={[styles.secaoTitulo, temaEscuro && styles.textDark]}>
-                            Configurações
+                            Settings
                         </Text>
 
                         <View style={styles.opcaoContainer}>
                             <Text style={[styles.opcaoLabel, temaEscuro && styles.textDark]}>
-                                Tema Escuro
+                                Dark Theme
                             </Text>
                             <Switch
                                 trackColor={{ false: '#e0e0e0', true: '#81b0ff' }}
@@ -219,7 +267,7 @@ export default function Profile() {
 
                         <View style={styles.opcaoContainer}>
                             <Text style={[styles.opcaoLabel, temaEscuro && styles.textDark]}>
-                                Notificações
+                                Notifications
                             </Text>
                             <Switch
                                 trackColor={{ false: '#e0e0e0', true: '#81b0ff' }}
@@ -229,7 +277,7 @@ export default function Profile() {
                                 value={notificacoes}
                             />
                         </View>
-
+                        {/* 
                         <View style={[styles.opcaoContainer, styles.ultimaOpcao]}>
                             <Text style={[styles.opcaoLabel, temaEscuro && styles.textDark]}>
                                 Login com Biometria
@@ -241,11 +289,11 @@ export default function Profile() {
                                 onValueChange={alternarBiometria}
                                 value={biometria}
                             />
-                        </View>
+                        </View> */}
                     </View>
 
                     {/* Links úteis */}
-                    <View style={[styles.secao, temaEscuro && styles.cardDark]}>
+                    {/* <View style={[styles.secao, temaEscuro && styles.cardDark]}>
                         <Text style={[styles.secaoTitulo, temaEscuro && styles.textDark]}>
                             Ajuda e Suporte
                         </Text>
@@ -289,7 +337,7 @@ export default function Profile() {
                             </Text>
                             <Text style={styles.linkSeta}>→</Text>
                         </TouchableOpacity>
-                    </View>
+                    </View> */}
 
                     {/* Botões de conta */}
                     <View style={[styles.secao, temaEscuro && styles.cardDark]}>
@@ -305,6 +353,23 @@ export default function Profile() {
                             onPress={excluirConta}
                         >
                             <Text style={styles.botaoExcluirText}>Excluir Conta</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.bottomNavigation}>
+                        <TouchableOpacity style={styles.navItem} onPress={() => router.push('/Dashboard')}>
+                            <Text style={[styles.navIcon, styles.navIcon]}>🏠</Text>
+                            <Text style={[styles.navText, styles.navText]}>Home</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.navItem}>
+                            <Text style={styles.navIcon}>💳</Text>
+                            <Text style={styles.navText}>My Cards</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.navItem} onPress={() => router.push('/Profile')}>
+                            <Text style={styles.activeNavIcon}>👤</Text>
+                            <Text style={styles.activeNavText}>Profile</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -345,7 +410,7 @@ const styles = StyleSheet.create({
     },
     backButtonText: {
         fontSize: 24,
-        color: '#4a7df3',
+        color: '#6366F1',
     },
     headerTitle: {
         fontSize: 18,
@@ -400,7 +465,7 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         borderRadius: 50,
-        backgroundColor: '#4a7df3',
+        backgroundColor: '#6366F1',
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 10,
@@ -414,7 +479,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
     },
     editarFotoText: {
-        color: '#4a7df3',
+        color: '#6366F1',
         fontSize: 14,
         fontWeight: '500',
     },
@@ -512,7 +577,7 @@ const styles = StyleSheet.create({
         color: '#7b8bb2',
     },
     botaoLogout: {
-        backgroundColor: '#4a7df3',
+        backgroundColor: '#ff3366',
         paddingVertical: 15,
         borderRadius: 8,
         alignItems: 'center',
@@ -541,5 +606,66 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#7b8bb2',
         marginBottom: 30,
+    },
+    form: {
+        marginTop: 10,
+    },
+    label: {
+        marginLeft: 20,
+        fontSize: 14,
+        color: '#333',
+        marginBottom: 8,
+        fontWeight: '400',
+    },
+    input: {
+        marginLeft: 20,
+        marginRight: 20,
+        backgroundColor: '#f5f5f5',
+        borderRadius: 8,
+        paddingHorizontal: 16,
+        paddingVertical: 12,
+        marginBottom: 20,
+        fontSize: 16,
+        color: '#333333',
+    },
+    button: {
+        backgroundColor: '#ff3366',
+        borderRadius: 8,
+        paddingVertical: 16,
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    buttonText: {
+        color: '#ffffff',
+        fontSize: 16,
+        fontWeight: '600',
+    },
+    bottomNavigation: {
+        flexDirection: 'row',
+        backgroundColor: 'white',
+        paddingBottom: 20,
+        paddingTop: 10,
+        borderTopWidth: 1,
+        borderTopColor: '#F0F2F5',
+    },
+    navItem: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    navIcon: {
+        fontSize: 20,
+        marginBottom: 5,
+        color: '#888',
+    },
+    navText: {
+        fontSize: 12,
+        color: '#888',
+    },
+    activeNavIcon: {
+        color: '#6C5CE7',
+    },
+    activeNavText: {
+        color: '#6C5CE7',
+        fontWeight: '500',
     },
 });

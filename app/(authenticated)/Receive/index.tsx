@@ -26,8 +26,8 @@ export default function Receive() {
             try {
                 // Simulando um tempo de carregamento
                 setTimeout(() => {
-                    setNomeUsuario('João Silva');
-                    setApelido('joaozinho');
+                    setNomeUsuario('Jennifer Kaori Suzuki');
+                    setApelido('Jennie');
                     setCarregando(false);
                 }, 1000);
             } catch (erro) {
@@ -64,13 +64,13 @@ export default function Receive() {
                 >
                     <Text style={styles.backButtonText}>←</Text>
                 </TouchableOpacity>
-                <Text style={styles.headerTitle}>Receber Dinheiro</Text>
+                <Text style={styles.headerTitle}>Receive Money</Text>
                 <View style={styles.emptySpace} />
             </View>
 
             {carregando ? (
                 <View style={styles.loadingContainer}>
-                    <ActivityIndicator size="large" color="#4a7df3" />
+                    <ActivityIndicator size="large" color="#6366F1" />
                     <Text style={styles.loadingText}>Carregando suas informações...</Text>
                 </View>
             ) : (
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     },
     backButtonText: {
         fontSize: 24,
-        color: '#4a7df3',
+        color: '#6366F1',
     },
     headerTitle: {
         fontSize: 18,
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     qrCodePlaceholder: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#4a7df3',
+        color: '#6366F1',
     },
     qrCodeInfo: {
         fontSize: 14,
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     },
     copyButtonText: {
         fontSize: 14,
-        color: '#4a7df3',
+        color: '#6366F1',
         fontWeight: '500',
     },
     chaveApelidoInstrucao: {
@@ -255,11 +255,11 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     shareButton: {
-        backgroundColor: '#4a7df3',
+        backgroundColor: '#6366F1',
         borderRadius: 8,
         paddingVertical: 14,
         alignItems: 'center',
-        shadowColor: '#4a7df3',
+        shadowColor: '#6366F1',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.2,
         shadowRadius: 8,

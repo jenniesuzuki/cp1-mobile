@@ -173,7 +173,7 @@ export default function Transactions() {
         <View style={styles.buscaContainer}>
             <TextInput
                 style={styles.inputBusca}
-                placeholder="Buscar transações..."
+                placeholder="Search"
                 value={termoBusca}
                 onChangeText={setTermoBusca}
                 onSubmitEditing={realizarBusca}
@@ -247,7 +247,7 @@ export default function Transactions() {
                 >
                     <Text style={styles.backButtonText}>←</Text>
                 </TouchableOpacity>
-                <Text style={styles.headerTitle}>Histórico de Transações</Text>
+                <Text style={styles.headerTitle}>Transactions</Text>
                 <View style={styles.emptySpace} />
             </View>
 
@@ -356,7 +356,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f5f5',
     },
     filtroBotaoAtivo: {
-        backgroundColor: '#4a7df3',
+        backgroundColor: '#6366F1',
     },
     filtroTexto: {
         fontSize: 14,
